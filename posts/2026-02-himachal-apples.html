@@ -23,7 +23,7 @@ body{
   background:var(--bg);
   color:var(--text);
   line-height:1.7;
-  margin-top:70px;
+  margin-top:80px;
 }
 
 /* NAVIGATION */
@@ -48,7 +48,9 @@ nav a{
   font-weight:500;
 }
 
-nav a:hover{color:var(--accent)}
+nav a:hover{
+  color:var(--accent);
+}
 
 /* CONTENT */
 .container{
@@ -73,10 +75,41 @@ h2{
   margin-bottom:2rem;
 }
 
+.highlight{
+  background:linear-gradient(135deg,#fee2e2,#fff);
+  padding:2rem;
+  border-radius:14px;
+  margin:2rem 0;
+  font-weight:500;
+}
+
+/* IMAGE GRID */
+.image-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+  margin:2rem 0;
+}
+
+.image-grid img{
+  width:100%;
+  border-radius:12px;
+  object-fit:cover;
+  height:200px;
+  transition:transform 0.3s ease;
+}
+
+.image-grid img:hover{
+  transform:scale(1.05);
+}
+
 /* TIMELINE */
 .timeline-wrapper{
   overflow-x:auto;
   padding:2rem 0;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
 }
 
 .timeline{
@@ -98,8 +131,19 @@ h2{
 
 .event{
   position:relative;
-  min-width:200px;
+  min-width:260px;
   padding-top:70px;
+  scroll-snap-align:center;
+  scroll-snap-stop:always;
+
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.6s ease;
+}
+
+.event.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .event::before{
@@ -114,6 +158,16 @@ h2{
   border-radius:50%;
 }
 
+.event.visible::before{
+  animation:pulse 1.5s ease-out;
+}
+
+@keyframes pulse{
+  0%{transform:scale(0.6);opacity:0.6;}
+  50%{transform:scale(1.3);opacity:1;}
+  100%{transform:scale(1);}
+}
+
 .event h3{
   font-size:1rem;
   margin-bottom:0.5rem;
@@ -125,15 +179,15 @@ h2{
   padding:1.2rem;
   border-radius:12px;
   box-shadow:0 10px 25px rgba(0,0,0,0.05);
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.highlight{
-  background:linear-gradient(135deg,#fee2e2,#fff);
-  padding:2rem;
-  border-radius:14px;
-  margin:2rem 0;
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.12);
 }
 
+/* FOOTER */
 footer{
   margin-top:4rem;
   padding-top:2rem;
@@ -148,34 +202,36 @@ footer{
 <nav>
   <ul>
     <li><a href="../index.html">Home</a></li>
+    <li><a href="../blog.html">Blog</a></li>
   </ul>
 </nav>
 
 <div class="container">
 
 <h1>Apples of Himachal Pradesh</h1>
-<p class="meta">Published: February 2026 · Story of a Mountain Revolution</p>
+<p class="meta">Published February 2026 · By Anjali · Software Developer</p>
 
 <p>
-The apple story of Himachal Pradesh is not accidental agriculture.
-It began with one calculated experiment that transformed an entire state economy.
+The apple story of Himachal Pradesh began as a deliberate experiment,
+not an accident of nature.
 </p>
 
 <h2>The Pioneer</h2>
 
-
-::contentReference[oaicite:0]{index=0}
-
+<div class="image-grid">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Samuel_Evans_Stokes.jpg" alt="Samuel Evans Stokes Jr">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Kotgarh_Himachal.jpg" alt="Kotgarh Himachal">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Delicious_apple.jpg" alt="Red Delicious Apple">
+</div>
 
 <p>
-The breakthrough came through <strong>:contentReference[oaicite:1]{index=1}</strong>,
-an American missionary who settled in Kotgarh near Shimla.
-In 1916, he imported grafted Red Delicious saplings from the United States.
+In 1916, Samuel Evans Stokes Jr. imported Red Delicious saplings
+from the United States and planted them in Kotgarh near Shimla.
+The altitude and climate proved ideal.
 </p>
 
 <div class="highlight">
-He did not plant seeds randomly.  
-He planted commercial potential.
+One orchard experiment became a statewide economic transformation.
 </div>
 
 <h2>Historical Timeline</h2>
@@ -200,7 +256,7 @@ He planted commercial potential.
     <div class="event">
       <h3>1920s</h3>
       <div class="card">
-        Successful harvest inspires neighboring farmers.
+        Successful harvest inspires surrounding farmers.
       </div>
     </div>
 
@@ -214,31 +270,24 @@ He planted commercial potential.
     <div class="event">
       <h3>Today</h3>
       <div class="card">
-        Himachal becomes one of India’s leading apple producers.
+        Himachal Pradesh stands among India's top apple producers.
       </div>
     </div>
 
   </div>
 </div>
 
-<h2>The Modern Orchard Economy</h2>
+<h2>Modern Orchard Economy</h2>
 
-
-::contentReference[oaicite:2]{index=2}
-
-
-<p>
-Today, apple cultivation is:
-</p>
-
-<ul>
-<li>A primary income source for thousands of families</li>
-<li>A driver of rural infrastructure</li>
-<li>A defining identity of the Himalayan economy</li>
-</ul>
+<div class="image-grid">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Apple_orchard_Shimla.jpg" alt="Shimla orchard">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Apple_harvesting_Himachal.jpg" alt="Apple harvesting">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Kinnaur_Apple_Market.jpg" alt="Apple market">
+</div>
 
 <p>
-What began as a single orchard in Kotgarh became an agricultural transformation across mountain terrain.
+Today apples drive rural income, infrastructure development,
+and define the agricultural identity of the Himalayan region.
 </p>
 
 <footer>
@@ -246,6 +295,20 @@ What began as a single orchard in Kotgarh became an agricultural transformation 
 </footer>
 
 </div>
+
+<script>
+const events = document.querySelectorAll('.event');
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.3});
+
+events.forEach(event=>observer.observe(event));
+</script>
 
 </body>
 </html>
