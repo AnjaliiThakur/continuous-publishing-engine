@@ -17,37 +17,10 @@ jobs:
       # Step 1: Checkout the repository
       - name: Checkout repo
         uses: actions/checkout@v3
-        name: Update Blog Feed
 
-
-
+      # Step 2: Run Feed Generator using your Docker action
       - name: Run Feed Generator
         uses: AnjaliiThakur/continuous-publishing-engine-generator@main
         with:
           email: ${{ github.actor }}@localhost
           name: ${{ github.actor }}
-
-      # # Step 2: Set up Python
-      # - name: Set up Python
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: "3.10"
-
-      # # Step 3: Install dependencies
-      # - name: Install Python dependencies
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install pyyaml
-
-      # # Step 4: Run feed generator
-      # - name: Generate blog feed
-      #   run: python feed.py
-
-      # # Step 5: Commit and push changes
-      # - name: Commit and push updates
-      #   run: |
-      #     git config user.name "GitHub Actions"
-      #     git config user.email "actions@github.com"
-      #     git add -A
-      #     git diff --cached --quiet || git commit -m "Update blog feed"
-      #     git push
