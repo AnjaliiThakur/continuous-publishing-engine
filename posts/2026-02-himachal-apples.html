@@ -9,9 +9,11 @@
 
 <style>
 :root{
-  --primary:#111827;
-  --accent:#b91c1c;
-  --bg:#f9fafb;
+  --primary:#0f172a;
+  --accent:#dc2626;
+  --bg:#f8fafc;
+  --text:#1e293b;
+  --muted:#64748b;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -19,19 +21,18 @@
 body{
   font-family:Inter,sans-serif;
   background:var(--bg);
-  color:#1f2937;
-  line-height:1.8;
-  margin-top:70px; /* space for fixed navbar */
+  color:var(--text);
+  line-height:1.7;
+  margin-top:70px;
 }
 
 /* NAVIGATION */
 nav{
-  background:#0f172a;
+  background:var(--primary);
   padding:1rem 2rem;
   position:fixed;
   width:100%;
   top:0;
-  left:0;
   z-index:1000;
 }
 
@@ -47,30 +48,97 @@ nav a{
   font-weight:500;
 }
 
-nav a:hover{
-  color:var(--accent);
-}
+nav a:hover{color:var(--accent)}
 
 /* CONTENT */
 .container{
-  max-width:800px;
+  max-width:1000px;
   margin:3rem auto;
   padding:1rem;
 }
 
 h1{
   font-family:'Playfair Display',serif;
+  font-size:2.8rem;
   margin-bottom:1rem;
 }
 
+h2{
+  margin:3rem 0 1rem;
+  font-size:1.6rem;
+}
+
 .meta{
-  color:#6b7280;
+  color:var(--muted);
   margin-bottom:2rem;
 }
 
-a{
+/* TIMELINE */
+.timeline-wrapper{
+  overflow-x:auto;
+  padding:2rem 0;
+}
+
+.timeline{
+  display:flex;
+  gap:3rem;
+  position:relative;
+  min-width:900px;
+}
+
+.timeline::before{
+  content:'';
+  position:absolute;
+  top:35px;
+  left:0;
+  width:100%;
+  height:4px;
+  background:var(--accent);
+}
+
+.event{
+  position:relative;
+  min-width:200px;
+  padding-top:70px;
+}
+
+.event::before{
+  content:'';
+  position:absolute;
+  top:26px;
+  left:0;
+  width:20px;
+  height:20px;
+  background:white;
+  border:4px solid var(--accent);
+  border-radius:50%;
+}
+
+.event h3{
+  font-size:1rem;
+  margin-bottom:0.5rem;
   color:var(--accent);
-  text-decoration:none;
+}
+
+.card{
+  background:white;
+  padding:1.2rem;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.highlight{
+  background:linear-gradient(135deg,#fee2e2,#fff);
+  padding:2rem;
+  border-radius:14px;
+  margin:2rem 0;
+}
+
+footer{
+  margin-top:4rem;
+  padding-top:2rem;
+  border-top:1px solid #e2e8f0;
+  color:var(--muted);
 }
 </style>
 </head>
@@ -86,20 +154,96 @@ a{
 <div class="container">
 
 <h1>Apples of Himachal Pradesh</h1>
-<p class="meta"><em>Published: February 2026</em></p>
+<p class="meta">Published: February 2026 · Story of a Mountain Revolution</p>
 
 <p>
-Himachal Pradesh is known for its scenic orchards spread across Shimla,
-Kinnaur, and Kullu. Apple farming has reshaped the local economy and
-become a symbol of resilience in mountain agriculture.
+The apple story of Himachal Pradesh is not accidental agriculture.
+It began with one calculated experiment that transformed an entire state economy.
 </p>
+
+<h2>The Pioneer</h2>
+
+
+::contentReference[oaicite:0]{index=0}
+
 
 <p>
-Beyond economics, apples represent tradition, seasonal migration patterns,
-and evolving agricultural techniques such as high-density plantation.
+The breakthrough came through <strong>:contentReference[oaicite:1]{index=1}</strong>,
+an American missionary who settled in Kotgarh near Shimla.
+In 1916, he imported grafted Red Delicious saplings from the United States.
 </p>
 
-<p><a href="../blog.html">← Back to Blog</a></p>
+<div class="highlight">
+He did not plant seeds randomly.  
+He planted commercial potential.
+</div>
+
+<h2>Historical Timeline</h2>
+
+<div class="timeline-wrapper">
+  <div class="timeline">
+
+    <div class="event">
+      <h3>1904</h3>
+      <div class="card">
+        Stokes arrives in India and later settles in Kotgarh.
+      </div>
+    </div>
+
+    <div class="event">
+      <h3>1916</h3>
+      <div class="card">
+        Import of Red Delicious saplings from the United States.
+      </div>
+    </div>
+
+    <div class="event">
+      <h3>1920s</h3>
+      <div class="card">
+        Successful harvest inspires neighboring farmers.
+      </div>
+    </div>
+
+    <div class="event">
+      <h3>1930s</h3>
+      <div class="card">
+        Expansion into Shimla, Kinnaur and Kullu valleys.
+      </div>
+    </div>
+
+    <div class="event">
+      <h3>Today</h3>
+      <div class="card">
+        Himachal becomes one of India’s leading apple producers.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<h2>The Modern Orchard Economy</h2>
+
+
+::contentReference[oaicite:2]{index=2}
+
+
+<p>
+Today, apple cultivation is:
+</p>
+
+<ul>
+<li>A primary income source for thousands of families</li>
+<li>A driver of rural infrastructure</li>
+<li>A defining identity of the Himalayan economy</li>
+</ul>
+
+<p>
+What began as a single orchard in Kotgarh became an agricultural transformation across mountain terrain.
+</p>
+
+<footer>
+← <a href="../blog.html">Back to Blog</a>
+</footer>
 
 </div>
 
