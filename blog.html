@@ -1,124 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog | Anjali Thakur</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-:root{
-  --primary:#111827;
-  --accent:#b91c1c;
-  --bg:#f9fafb;
-  --muted:#6b7280;
-}
+    <style>
+      body {
+        font-family: Inter, sans-serif;
+        background: #f8fafc;
+        margin: 0;
+        padding: 0;
+      }
 
-*{margin:0;padding:0;box-sizing:border-box}
+      nav {
+        background: #0f172a;
+        padding: 1rem 2rem;
+      }
 
-body{
-  font-family:Inter,sans-serif;
-  background:var(--bg);
-  color:#1f2937;
-  margin-top:70px; /* space for fixed nav */
-}
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin-right: 2rem;
+      }
 
-/* NAVIGATION */
-nav{
-  background:#0f172a;
-  padding:1rem 2rem;
-  position:fixed;
-  width:100%;
-  top:0;
-  left:0;
-  z-index:1000;
-}
+      .container {
+        max-width: 900px;
+        margin: 3rem auto;
+        padding: 1rem;
+      }
 
-nav ul{
-  list-style:none;
-  display:flex;
-  gap:2rem;
-}
+      h1 {
+        margin-bottom: 2rem;
+      }
 
-nav a{
-  color:white;
-  text-decoration:none;
-  font-weight:500;
-}
+      .post-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
 
-nav a:hover{
-  color:var(--accent);
-}
+      .post-card:hover {
+        transform: translateY(-4px);
+      }
 
-/* HEADER */
-header{
-  background:#111827;
-  color:white;
-  padding:3rem;
-  text-align:center;
-}
+      .post-date {
+        color: #64748b;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
 
-h1{
-  font-family:'Playfair Display',serif;
-}
+      .post-card a {
+        text-decoration: none;
+        color: #0f172a;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+    </nav>
 
-/* CONTENT */
-.container{
-  max-width:900px;
-  margin:2rem auto;
-  padding:0 1rem;
-}
+    <div class="container">
+      <h1>Monthly Writings</h1>
+      <div id="posts-container"></div>
+    </div>
 
-.post-card{
-  background:white;
-  padding:1.5rem;
-  margin-bottom:1rem;
-  border-radius:8px;
-  box-shadow:0 4px 10px rgba(0,0,0,.05);
-}
+    <script>
+      // Central post registry
+      const posts = [
+        {
+          title: "Apples of Himachal Pradesh",
+          date: "February 2026",
+          file: "posts/2026-02-himachal-apples.html",
+          excerpt:
+            "How apple cultivation began and transformed the mountain economy.",
+        },
+        {
+          title: "Kullu Market Diaries",
+          date: "March 2026",
+          file: "posts/2026-03-kullu-market.html",
+          excerpt:
+            "Observations from the local markets and agricultural trade.",
+        },
+      ];
 
-.post-card h2{
-  margin:0.5rem 0;
-}
+      // Sort newest first automatically
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-.post-card a{
-  text-decoration:none;
-  color:var(--accent);
-  font-weight:600;
-}
+      const container = document.getElementById("posts-container");
 
-.date{
-  font-size:.85rem;
-  color:var(--muted);
-}
-</style>
-</head>
+      posts.forEach((post) => {
+        const card = document.createElement("div");
+        card.className = "post-card";
 
-<body>
+        card.innerHTML = `
+    <div class="post-date">${post.date}</div>
+    <a href="${post.file}">${post.title}</a>
+    <p>${post.excerpt}</p>
+  `;
 
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="blog.html">Blog</a></li>
-  </ul>
-</nav>
-
-<header>
-  <h1>Monthly Reflections</h1>
-  <p>Writing about places and stories around me</p>
-</header>
-
-<div class="container">
-
-  <div class="post-card">
-    <div class="date">February 2026</div>
-    <h2>Apples of Himachal Pradesh</h2>
-    <p>A look into the orchards, economy, and culture of apple farming.</p>
-    <a href="posts/2026-02-himachal-apples.html">Read More →</a>
-  </div>
-
-</div>
-
-</body>
+        container.appendChild(card);
+      });
+    </script>
+  </body>
 </html>
