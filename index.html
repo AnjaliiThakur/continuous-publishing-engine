@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anjali Thakur | Stories Near Me</title>
 
-<meta name="description" content="A monthly blog documenting places, culture, agriculture, and observations from around Himachal Pradesh.">
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -26,7 +24,36 @@ body{
   line-height:1.7;
 }
 
+/* NAVIGATION */
+nav{
+  background:#0f172a;
+  padding:1rem 2rem;
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:1000;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:2rem;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+}
+
+nav a:hover{
+  color:var(--accent);
+}
+
+/* HEADER */
 header{
+  margin-top:70px;
   background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
   url('https://images.unsplash.com/photo-1541696432-82c6da8ce7bf');
   background-size:cover;
@@ -53,9 +80,7 @@ header p{
   padding:0 1.5rem;
 }
 
-section{
-  margin-bottom:3rem;
-}
+section{margin-bottom:3rem}
 
 h2{
   font-family:'Playfair Display',serif;
@@ -83,10 +108,6 @@ h2{
   font-weight:600;
 }
 
-.button:hover{
-  opacity:.9;
-}
-
 footer{
   text-align:center;
   padding:2rem;
@@ -98,6 +119,13 @@ footer{
 </head>
 
 <body>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+  </ul>
+</nav>
 
 <header>
   <h1>Stories Near Me</h1>
@@ -111,17 +139,8 @@ footer{
     <div class="card">
       <p>
         By profession, I am a software developer. Beyond technology,
-        I am deeply interested in observing and documenting the environment
-        and communities around me.
-      </p>
-      <p>
-        This blog is a monthly journal where I write about local stories —
-        from apple orchards and village markets to seasonal changes
-        and regional traditions.
-      </p>
-      <p>
-        The objective is to combine structured thinking with storytelling,
-        creating a consistent digital archive of regional insights over time.
+        I document local stories from apple orchards to village markets
+        once every month.
       </p>
     </div>
   </section>
@@ -131,21 +150,9 @@ footer{
     <div class="card">
       <h3>Apples of Himachal Pradesh</h3>
       <p>
-        Exploring how apple cultivation transformed the region’s economy,
-        culture, and agricultural practices.
+        Exploring how apple cultivation transformed the region’s economy and culture.
       </p>
       <a class="button" href="blog.html">Read the Blog →</a>
-    </div>
-  </section>
-
-  <section>
-    <h2>Project Vision</h2>
-    <div class="card">
-      <p>
-        This platform reflects both my technical background and my interest
-        in long-form writing. It is intentionally minimal, scalable, and
-        designed to grow with one thoughtful post every month.
-      </p>
     </div>
   </section>
 
