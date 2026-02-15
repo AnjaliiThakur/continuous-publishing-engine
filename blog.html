@@ -78,41 +78,25 @@
     </div>
 
     <script>
-      // Central post registry
-      const posts = [
-        {
-          title: "Apples of Himachal Pradesh",
-          date: "February 2026",
-          file: "posts/2026-02-himachal-apples.html",
-          excerpt:
-            "How apple cultivation began and transformed the mountain economy.",
-        },
-        {
-          title: "Kullu Market Diaries",
-          date: "March 2026",
-          file: "posts/2026-03-kullu-market.html",
-          excerpt:
-            "Observations from the local markets and agricultural trade.",
-        },
-      ];
+      async function loadPosts() {
+        const response = await fetch("blog_feed.json");
+        const data = await response.json();
+        const container = document.getElementById("posts-container");
 
-      // Sort newest first automatically
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        data.posts.forEach((post) => {
+          const card = document.createElement("div");
+          card.className = "post-card";
 
-      const container = document.getElementById("posts-container");
+          card.innerHTML = `
+            <div class="post-date">${post.date}</div>
+            <a href="${post.file}">${post.title}</a>
+            <p>${post.excerpt}</p>
+          `;
 
-      posts.forEach((post) => {
-        const card = document.createElement("div");
-        card.className = "post-card";
-
-        card.innerHTML = `
-    <div class="post-date">${post.date}</div>
-    <a href="${post.file}">${post.title}</a>
-    <p>${post.excerpt}</p>
-  `;
-
-        container.appendChild(card);
-      });
+          container.appendChild(card);
+        });
+      }
+      loadPosts();
     </script>
   </body>
 </html>
