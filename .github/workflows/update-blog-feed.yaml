@@ -39,6 +39,6 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add feed.yaml feed.py blog.html index.html posts/*
-          git commit -m "Update blog feed" || echo "No changes to commit"
+          git add -A
+          git diff --cached --quiet || git commit -m "Update blog feed"
           git push
