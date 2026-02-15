@@ -33,7 +33,6 @@
         margin-top: 80px;
       }
 
-      /* NAVIGATION */
       nav {
         background: var(--primary);
         padding: 1rem 2rem;
@@ -59,7 +58,6 @@
         color: var(--accent);
       }
 
-      /* CONTENT */
       .container {
         max-width: 1000px;
         margin: 3rem auto;
@@ -90,7 +88,6 @@
         font-weight: 500;
       }
 
-      /* IMAGE GRID */
       .image-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -110,7 +107,6 @@
         transform: scale(1.05);
       }
 
-      /* TIMELINE */
       .timeline-wrapper {
         overflow-x: auto;
         padding: 2rem 0;
@@ -142,7 +138,6 @@
         padding-top: 70px;
         scroll-snap-align: center;
         scroll-snap-stop: always;
-
         opacity: 0;
         transform: translateY(30px);
         transition: all 0.6s ease;
@@ -204,12 +199,26 @@
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
       }
 
-      /* FOOTER */
       footer {
         margin-top: 4rem;
         padding-top: 2rem;
         border-top: 1px solid #e2e8f0;
         color: var(--muted);
+      }
+
+      /* Related Stories */
+      .related-card {
+        text-align: center;
+        padding: 0.5rem;
+      }
+      .related-card img {
+        height: 160px;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+      .related-card p {
+        margin-top: 0.5rem;
+        font-weight: 500;
       }
     </style>
   </head>
@@ -233,7 +242,6 @@
       </p>
 
       <h2>The Pioneer</h2>
-
       <div class="image-grid">
         <img
           src="../images/Samuel Evans Stokes Jr.jpeg"
@@ -257,7 +265,6 @@
       </div>
 
       <h2>Historical Timeline</h2>
-
       <div class="timeline-wrapper">
         <div class="timeline">
           <div class="event">
@@ -266,28 +273,24 @@
               Stokes arrives in India and later settles in Kotgarh.
             </div>
           </div>
-
           <div class="event">
             <h3>1916</h3>
             <div class="card">
               Import of Red Delicious saplings from the United States.
             </div>
           </div>
-
           <div class="event">
             <h3>1920s</h3>
             <div class="card">
               Successful harvest inspires surrounding farmers.
             </div>
           </div>
-
           <div class="event">
             <h3>1930s</h3>
             <div class="card">
               Expansion into Shimla, Kinnaur and Kullu valleys.
             </div>
           </div>
-
           <div class="event">
             <h3>Today</h3>
             <div class="card">
@@ -298,7 +301,6 @@
       </div>
 
       <h2>Modern Orchard Economy</h2>
-
       <div class="image-grid">
         <img src="../images/Shimla orchard.jpeg" alt="Shimla orchard" />
         <img src="../images/Apple market.jpeg" alt="Apple market" />
@@ -309,23 +311,68 @@
         the agricultural identity of the Himalayan region.
       </p>
 
+      <!-- Author's Note -->
+      <div class="highlight">
+        <strong>Author's Note:</strong> Apples have shaped not just the economy
+        but the culture and daily life in Himachal Pradesh. Every orchard tells
+        a story.
+      </div>
+
+      <!-- Related Stories -->
+      <h2>Related Stories</h2>
+      <div class="image-grid">
+        <div class="related-card">
+          <a href="posts/2025-11-kullu-festivals.html">
+            <img src="../images/Kullu Dussehra.jpeg" alt="Kullu Dussehra" />
+            <p>Kullu Festivals: Tradition and Celebration</p>
+          </a>
+        </div>
+        <div class="related-card">
+          <a href="posts/2025-12-himachal-rivers.html">
+            <img src="../images/River Beas.jpeg" alt="River Beas" />
+            <p>The Rivers of Himachal: Lifelines of the Hills</p>
+          </a>
+        </div>
+      </div>
+
       <footer>← <a href="../blog.html">Back to Blog</a></footer>
     </div>
 
-    <script>
-      const events = document.querySelectorAll(".event");
+    <!-- Back-to-top button -->
+    <button
+      id="topBtn"
+      style="
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        padding: 0.8rem 1.2rem;
+        background: var(--accent);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      "
+    >
+      ↑ Top
+    </button>
 
+    <script>
+      // Back to top
+      const topBtn = document.getElementById("topBtn");
+      topBtn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
+
+      // Timeline observer
+      const events = document.querySelectorAll(".event");
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
+            if (entry.isIntersecting) entry.target.classList.add("visible");
           });
         },
         { threshold: 0.3 },
       );
-
       events.forEach((event) => observer.observe(event));
     </script>
   </body>
