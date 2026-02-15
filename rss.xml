@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>Your Blog Name</title>
+<link>https://AnjaliiThakur.github.io/AnjaliiThakur.github.io/</link>
+<description>Latest posts from my blog</description>
+<language>en-us</language>
+
+<item>
+  <title>My First Blog Post</title>
+  <link>https://AnjaliiThakur.github.io/AnjaliiThakur.github.io/posts/post1.html</link>
+  <pubDate>Sat, 15 Feb 2026 00:00:00 GMT</pubDate>
+  <description>Short summary of the post.</description>
+  <guid>https://AnjaliiThakur.github.io/AnjaliiThakur.github.io/posts/post1.html</guid>
+</item>
+
+</channel>
+</rss>
