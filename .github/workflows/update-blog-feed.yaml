@@ -24,3 +24,38 @@ jobs:
         with:
           email: ${{ github.actor }}@localhost
           name: ${{ github.actor }}
+
+                ┌─────────────────────────────────────┐
+                │   Repo 1: Blog Repository           │
+                │   (Stories Near Me Website)         │
+                └─────────────────────────────────────┘
+                             │
+                             │ 1. Developer pushes new post
+                             ▼
+                   GitHub Actions Workflow
+                 (.github/workflows/update-blog-feed.yaml)
+                             │
+                             │ 2. Triggers Docker Action
+                             ▼
+        ┌─────────────────────────────────────────────┐
+        │ Repo 2: continuous-publishing-engine        │
+        │ Custom Docker-based GitHub Action           │
+        └─────────────────────────────────────────────┘
+                             │
+                             │ 3. Runs container
+                             ▼
+                    entrypoint.sh executes
+                             │
+                             │ 4. Runs feed.py
+                             ▼
+                Converts feed.yaml → blog_feed.json
+                             │
+                             │ 5. Auto commit + push
+                             ▼
+                 Updated blog_feed.json in Repo 1
+                             │
+                             ▼
+                     GitHub Pages rebuild
+                             │
+                             ▼
+                   Website updates live
